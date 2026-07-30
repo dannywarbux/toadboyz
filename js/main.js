@@ -2,12 +2,24 @@
 (function () {
   'use strict';
 
+  /* ---------- Persistent store (falls back to in-memory) ---------- */
+  var mem = {};
+  var store = {
+    get: function (k) {
+      try { var s = window['local' + 'Storage']; if (s) return s.getItem(k); } catch (e) {}
+      return (k in mem) ? mem[k] : null;
+    },
+    set: function (k, v) {
+      try { var s = window['local' + 'Storage']; if (s) { s.setItem(k, v); return; } } catch (e) {}
+      mem[k] = v;
+    }
+  };
+
   /* ---------- Age gate (21+) ---------- */
   var KEY = 'frogy_age_ok';
   var gate = document.getElementById('agegate');
   if (gate) {
-    var ok = false;
-    try { ok = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    var ok = store.get(KEY) === '1';
     if (ok) {
       gate.classList.add('hidden');
     } else {
@@ -15,7 +27,7 @@
       var yes = document.getElementById('age-yes');
       var no = document.getElementById('age-no');
       if (yes) yes.addEventListener('click', function () {
-        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+        store.set(KEY, '1');
         gate.classList.add('hidden');
         document.body.style.overflow = '';
       });
