@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — FRÖGY · Toadboyz</title>
+<meta name="description" content="Contact Frögy. Wholesale, press, and drop alerts. Los Angeles, Est 2026.">
+<link rel="icon" href="assets/img/f_icon_neon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="agegate" id="agegate">
+  <div class="agegate-inner">
+    <img src="assets/img/frogy_wordmark_slime.svg" alt="Frögy">
+    <h2>Are you 21 or older?</h2>
+    <p>You must be of legal age to enter. Frögy products are for adults 21+ only. Please consume responsibly.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" id="age-yes">Yes, I'm 21+</button>
+      <button class="btn btn-ghost" id="age-no">No</button>
+    </div>
+    <p class="deny">FRÖGY · TOADBOYZ · LOS ANGELES · EST 2026</p>
+  </div>
+</div>
+
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Frögy home"><img src="assets/img/f_icon_neon.png" alt="Frögy"></a>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="strains.html">Strains</a>
+    <a href="story.html">Story</a>
+    <a href="stockists.html">Stockists</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="narrow">
+    <p class="eyebrow">Say hello</p>
+    <h1>Contact</h1>
+    <p class="muted">Wholesale, press, or just want on the drop list? Reach the Toadboyz.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="narrow split" style="align-items:start">
+    <div class="reveal">
+      <form class="form" action="mailto:dan@oryoncanna.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="type">Inquiry</label>
+          <select id="type" name="type">
+            <option>Wholesale / Retailer</option>
+            <option>Press</option>
+            <option>Drop alerts</option>
+            <option>General</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send it</button>
+      </form>
+    </div>
+    <div class="reveal">
+      <h3 style="font-family:var(--font-body);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bone);font-size:var(--text-base)">Direct</h3>
+      <p class="muted" style="margin-top:var(--space-4)">Dan Carmel</p>
+      <p class="muted">Frögy · Toadboyz</p>
+      <p style="margin-top:var(--space-2)"><a href="mailto:dan@oryoncanna.com" style="color:var(--slime)">dan@oryoncanna.com</a></p>
+      <p class="faint" style="margin-top:var(--space-2)">Los Angeles, CA · Est 2026</p>
+
+      <h3 style="font-family:var(--font-body);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bone);font-size:var(--text-base);margin-top:var(--space-12)">Wholesale</h3>
+      <p class="muted" style="margin-top:var(--space-4)">Licensed California dispensaries and distributors — get the Toadboyz collection on your shelf. Include your license number in your message.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="wm" src="assets/img/frogy_wordmark_bone.svg" alt="Frögy">
+        <p class="faint" style="font-size:var(--text-sm);max-width:34ch">Small-batch California cannabis. Adults 21+ only. Please consume responsibly.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="strains.html">Strains</a>
+        <a href="story.html">Story</a>
+        <a href="stockists.html">Stockists</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="contact.html">Wholesale</a>
+        <a href="contact.html">Press</a>
+        <a href="mailto:dan@oryoncanna.com">dan@oryoncanna.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>FRÖGY · TOADBOYZ · LOS ANGELES · EST 2026</p>
+      <p>© <span data-year></span> Frögy. 21+ only.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
