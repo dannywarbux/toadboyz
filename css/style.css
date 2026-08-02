@@ -20,11 +20,10 @@
   --white: #FFFFFF;
 
   /* Strain neons */
-  --venom: #9FFF1A;
-  --breath: #00E5FF;
-  --milk: #FF2E93;
-  --stool: #FF6A00;
-  --skin: #B026FF;
+  /* v9.9c locked 3-strain roster */
+  --poison: #9FFF1A;  /* Frog Poison — slime green */
+  --dreams: #00E5FF;  /* Toad Dreams — cyan blue */
+  --toadup: #F2E71D;  /* Toad Up — lemon yellow */
 
   /* Type */
   --font-display: 'Anton', 'Arial Narrow', sans-serif;
