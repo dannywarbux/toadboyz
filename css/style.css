@@ -257,3 +257,38 @@ p { max-width: 62ch; }
 .page-hero { padding-top: 160px; padding-bottom: var(--space-16); text-align:center; position:relative; }
 .page-hero h1 { font-size: var(--text-2xl); color: var(--bone); }
 .page-hero p { margin: var(--space-4) auto 0; color: var(--bone-dim); }
+
+/* ===== LAUNCH BANNER ===== */
+.launch-bar{
+  display:flex;align-items:center;justify-content:center;gap:.75rem;
+  flex-wrap:wrap;text-align:center;
+  background:var(--slime);color:var(--ink);
+  padding:.6rem 1.25rem;font-family:var(--font-body);
+  font-size:var(--text-sm);letter-spacing:.02em;position:relative;z-index:40;
+}
+.launch-bar strong{font-weight:700;letter-spacing:.04em;}
+.launch-bar .pulse{
+  width:9px;height:9px;border-radius:50%;background:var(--ink);
+  box-shadow:0 0 0 0 rgba(10,10,10,.6);animation:pulse 1.8s infinite;flex:0 0 auto;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(10,10,10,.5);}
+  70%{box-shadow:0 0 0 10px rgba(10,10,10,0);}
+  100%{box-shadow:0 0 0 0 rgba(10,10,10,0);}
+}
+.launch-link{
+  color:var(--ink);font-weight:700;text-decoration:none;
+  border-bottom:2px solid var(--ink);padding-bottom:1px;white-space:nowrap;
+}
+.launch-link:hover{opacity:.7;}
+@media (prefers-reduced-motion:reduce){.launch-bar .pulse{animation:none;}}
+
+/* ===== TEASER VIDEO ===== */
+.teaser-sec{background:var(--ink);}
+.teaser-wrap{
+  max-width:420px;margin:0 auto;border-radius:var(--radius);overflow:hidden;
+  border:1px solid rgba(159,255,26,.25);
+  box-shadow:0 0 60px rgba(159,255,26,.12);background:#000;
+}
+.teaser-video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;}
+.center{text-align:center;}
