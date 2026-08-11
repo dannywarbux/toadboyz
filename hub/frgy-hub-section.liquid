@@ -1,9 +1,17 @@
 {% schema %}
 {"name":"Frogy Hub","settings":[]}
 {% endschema %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
+<!-- Hide theme chrome -->
+<style>
+  header.site-header, .site-header, #shopify-section-header, .header-wrapper,
+  footer.site-footer, .site-footer, #shopify-section-footer, .footer-wrapper,
+  .announcement-bar, #shopify-section-announcement-bar { display: none !important; }
+  body { background: #0a0a0a !important; }
+  main.main-content { padding: 0 !important; max-width: none !important; }
+</style>
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TOADBOYZ — Frögy · Los Angeles · Est 2026</title>
@@ -177,8 +185,9 @@
     .img-fade-in { opacity: 0; transition: opacity 0.6s ease; }
     .img-fade-in.loaded { opacity: 1; }
   </style>
-</head>
-<body class="bg-matte text-bone font-body grain">
+
+
+
   
   <!-- NAV -->
   <nav id="nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
@@ -667,5 +676,3 @@
       if (img.complete) img.classList.add('loaded');
     });
   </script>
-</body>
-</html>
