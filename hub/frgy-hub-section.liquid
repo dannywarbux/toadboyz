@@ -2,13 +2,61 @@
 {"name":"Frogy Hub","settings":[]}
 {% endschema %}
 
-<!-- Hide theme chrome -->
-<style>
-  header.site-header, .site-header, #shopify-section-header, .header-wrapper,
-  footer.site-footer, .site-footer, #shopify-section-footer, .footer-wrapper,
-  .announcement-bar, #shopify-section-announcement-bar { display: none !important; }
-  body { background: #0a0a0a !important; }
-  main.main-content { padding: 0 !important; max-width: none !important; }
+<style id="frgy-hub-reset">
+/* ---- Hide Horizon theme chrome (header + footer) ---- */
+#header-group,
+.shopify-section-group-header-group,
+.header-section,
+.shopify-section-group-footer-group,
+.footer-utilities { display: none !important; }
+
+/* ---- Reset page shell ---- */
+html, body { background: #0a0a0a !important; margin: 0 !important; padding: 0 !important; }
+
+#MainContent,
+main#MainContent,
+#MainContent.content-for-layout {
+  display: block !important; width: 100% !important; max-width: none !important;
+  margin: 0 !important; padding: 0 !important; grid-template-columns: none !important;
+}
+
+[id$="__frgy-hub"] {
+  display: block !important; width: 100% !important; max-width: none !important;
+  margin: 0 !important; padding: 0 !important;
+  grid-template-columns: none !important; grid-column: 1 / -1 !important;
+  --page-width: 100%; --page-margin: 0;
+}
+
+/* ---- Own grids (renamed to avoid Horizon's .grid collision) ---- */
+.frgy-shop-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 1.5rem !important;
+  width: 100% !important; max-width: none !important;
+}
+@media (min-width: 640px) {
+  .frgy-shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (min-width: 1024px) {
+  .frgy-shop-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 2rem !important; }
+}
+
+.frgy-about-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 3rem !important; align-items: start !important;
+  width: 100% !important; max-width: none !important;
+}
+@media (min-width: 768px) {
+  .frgy-about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 5rem !important; }
+}
+
+/* ---- Guarantee cards can size themselves ---- */
+.frgy-shop-grid > *, .frgy-about-grid > * {
+  min-width: 0 !important; width: auto !important; max-width: none !important;
+}
+.product-card { display: block !important; width: 100% !important; }
+[id$="__frgy-hub"] img { max-width: 100% !important; height: auto; }
 </style>
 
 
@@ -339,7 +387,7 @@
       </div>
       
       <!-- Product grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div class="frgy-shop-grid">
         
         <!-- Product 1: Corduroy -->
         <a href="https://toadboyz.com/products/frogy-corduroy-5-panel-snapback" target="_blank" rel="noopener" class="reveal product-card group block">
@@ -540,7 +588,7 @@
   <!-- ABOUT -->
   <section id="about" class="py-24 md:py-40 px-6 border-t border-matte-light">
     <div class="max-w-5xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+      <div class="frgy-about-grid">
         <div>
           <p class="reveal text-xs font-medium uppercase tracking-[0.3em] text-venom mb-6">The Brand</p>
           <h2 class="reveal reveal-delay-1 section-heading font-display text-bone mb-8">FRÖGY</h2>
