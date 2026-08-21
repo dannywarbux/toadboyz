@@ -1,0 +1,481 @@
+{% schema %}
+{"name":"Frogy Hub","settings":[]}
+{% endschema %}
+
+<style id="frgy-hub-reset">
+/* ---- Hide Horizon theme chrome (header + footer) ---- */
+#header-group,
+.shopify-section-group-header-group,
+.header-section,
+.shopify-section-group-footer-group,
+.footer-utilities { display: none !important; }
+
+/* ---- Reset page shell ---- */
+html, body { background: #0a0a0a !important; margin: 0 !important; padding: 0 !important; }
+
+#MainContent,
+main#MainContent,
+#MainContent.content-for-layout {
+  display: block !important; width: 100% !important; max-width: none !important;
+  margin: 0 !important; padding: 0 !important; grid-template-columns: none !important;
+}
+
+[id$="__frgy-hub"] {
+  display: block !important; width: 100% !important; max-width: none !important;
+  margin: 0 !important; padding: 0 !important;
+  grid-template-columns: none !important; grid-column: 1 / -1 !important;
+  --page-width: 100%; --page-margin: 0;
+}
+
+/* ---- Own grids (renamed to avoid Horizon's .grid collision) ---- */
+.frgy-shop-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 1.5rem !important;
+  width: 100% !important; max-width: none !important;
+}
+@media (min-width: 640px) {
+  .frgy-shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (min-width: 1024px) {
+  .frgy-shop-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 2rem !important; }
+}
+
+.frgy-about-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 3rem !important; align-items: start !important;
+  width: 100% !important; max-width: none !important;
+}
+@media (min-width: 768px) {
+  .frgy-about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 5rem !important; }
+}
+
+/* ---- Guarantee cards can size themselves ---- */
+.frgy-shop-grid > *, .frgy-about-grid > * {
+  min-width: 0 !important; width: auto !important; max-width: none !important;
+}
+.product-card { display: block !important; width: 100% !important; }
+[id$="__frgy-hub"] img { max-width: 100% !important; height: auto; }
+
+/* ---- Product card image hover-swap ---- */
+.product-card { position: relative; }
+.product-card .product-img,
+.product-card .product-img-hover {
+  transition: opacity 0.4s ease-in-out;
+  will-change: opacity;
+}
+.product-card .product-img-hover {
+  position: absolute; inset: 0; opacity: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.product-card:hover .product-img { opacity: 0; }
+.product-card:hover .product-img-hover { opacity: 1; }
+@media (hover: none) {
+  .product-card:hover .product-img { opacity: 1; }
+  .product-card:hover .product-img-hover { opacity: 0; }
+}
+
+</style>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOADBOYZ — Frögy · Los Angeles · Est 2026</title>
+  <meta name="description" content="Frögy · Toadboyz · Los Angeles · Est 2026. Streetwear culture, limited drops, production-yield scarcity. One dot. One frog. One Frögy.">
+  <meta property="og:title" content="TOADBOYZ — Frögy">
+  <meta property="og:description" content="Streetwear culture, limited drops, production-yield scarcity. Los Angeles, Est 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toadboyz.com">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20737%201477%22%3E%3Cpath%20fill%3D%22%23F5EFE3%22%20fill-rule%3D%22evenodd%22%20d%3D%22M611.4%2020.0%20L637.1%2020.0%20L640.0%2022.9%20L651.4%2022.9%20L677.1%2034.3%20L691.4%2045.7%20L711.4%2088.6%20L711.4%20148.6%20L702.9%20168.6%20L682.9%20197.1%20L665.7%20208.6%20L660.0%20208.6%20L640.0%20217.1%20L608.6%20217.1%20L580.0%20205.7%20L554.3%20177.1%20L542.9%20154.3%20L542.9%20140.0%20L540.0%20137.1%20L540.0%2094.3%20L542.9%2091.4%20L542.9%2080.0%20L551.4%2062.9%20L568.6%2042.9%20L585.7%2028.6%20L597.1%2022.9%20L608.6%2022.9%20Z%20M440.0%2022.9%20L445.7%2022.9%20L448.6%2028.6%20L448.6%2037.1%20L451.4%2040.0%20L451.4%20197.1%20L454.3%20200.0%20L454.3%20640.0%20L460.0%20645.7%20L474.3%20645.7%20L477.1%20648.6%20L668.6%20648.6%20L671.4%20651.4%20L680.0%20651.4%20L685.7%20657.1%20L688.6%20845.7%20L685.7%20848.6%20L685.7%20857.1%20L671.4%20862.9%20L462.9%20865.7%20L454.3%20877.1%20L454.3%20908.6%20L451.4%20911.4%20L451.4%20948.6%20L454.3%20951.4%20L454.3%201297.1%20L451.4%201300.0%20L451.4%201440.0%20L448.6%201442.9%20L448.6%201448.6%20L442.9%201451.4%20L174.3%201451.4%20L168.6%201442.9%20L168.6%201002.9%20L165.7%201000.0%20L165.7%20874.3%20L160.0%20865.7%20L74.3%20865.7%20L71.4%20862.9%20L28.6%20862.9%20L22.9%20860.0%20L22.9%20851.4%20L20.0%20848.6%20L20.0%20654.3%20L22.9%20651.4%20L34.3%20651.4%20L37.1%20648.6%20L145.7%20648.6%20L148.6%20645.7%20L160.0%20645.7%20L165.7%20640.0%20L165.7%20625.7%20L168.6%20622.9%20L168.6%20397.1%20L171.4%20394.3%20L171.4%20365.7%20L174.3%20362.9%20L174.3%20342.9%20L177.1%20340.0%20L177.1%20325.7%20L180.0%20322.9%20L185.7%20291.4%20L188.6%20288.6%20L194.3%20265.7%20L200.0%20257.1%20L200.0%20251.4%20L208.6%20237.1%20L208.6%20231.4%20L222.9%20202.9%20L228.6%20197.1%20L234.3%20182.9%20L254.3%20157.1%20L254.3%20154.3%20L314.3%2091.4%20L317.1%2091.4%20L328.6%2080.0%20L362.9%2057.1%20L371.4%2054.3%20L377.1%2048.6%20L414.3%2031.4%20L437.1%2025.7%20Z%22%2F%3E%3C%2Fsvg%3E">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=Pirata+One&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+   theme: {
+    extend: {
+     colors: {
+      'matte': '#0A0A0A',
+      'matte-light': '#141414',
+      'matte-card': '#1A1A1A',
+      'bone': '#F5EFE3',
+      'bone-dim': '#A09A8E',
+      'venom': '#9FFF1A',
+      'venom-dark': '#7BC10E',
+      'dreams': '#00E5FF',
+     },
+     fontFamily: {
+      'display': ['Anton', 'sans-serif'],
+      'body': ['Inter', 'sans-serif'],
+      'blackletter': ['Pirata One', 'serif'],
+     }
+    }
+   }
+    }
+  </script>
+
+  <style>
+    /* Base */
+    * { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { background: #0A0A0A; overflow-x: hidden; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #9FFF1A; border-radius: 0; }
+
+    /* Selection */
+    ::selection { background: #9FFF1A; color: #0A0A0A; }
+
+    /* Grain texture */
+    .grain::before {
+   content: '';
+   position: fixed;
+   top: 0; left: 0; width: 100%; height: 100%;
+   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+   pointer-events: none;
+   z-index: 9999;
+   opacity: 0.08;
+   mix-blend-mode: overlay;
+    }
+
+    /* Marquee */
+    @keyframes marquee {
+   0% { transform: translateX(0); }
+   100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+   display: flex;
+   animation: marquee 30s linear infinite;
+   white-space: nowrap;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* Scroll reveal */
+    .reveal {
+   opacity: 0;
+   transform: translateY(40px);
+   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Toad glow */
+    @keyframes pulse-glow {
+   0%, 100% { filter: drop-shadow(0 0 20px rgba(159, 255, 26, 0.4)) drop-shadow(0 0 60px rgba(159, 255, 26, 0.15)); }
+   50% { filter: drop-shadow(0 0 30px rgba(159, 255, 26, 0.6)) drop-shadow(0 0 100px rgba(159, 255, 26, 0.25)); }
+    }
+    .toad-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+    /* Product card hover */
+    .product-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .product-card:hover { transform: translateY(-8px); }
+    .product-card:hover .product-img { transform: scale(1.05); }
+    .product-card:hover .product-overlay { opacity: 1; }
+    .product-img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .product-overlay { transition: opacity 0.3s ease; }
+
+    /* Nav blur */
+    .nav-scrolled {
+   background: rgba(10, 10, 10, 0.85);
+   backdrop-filter: blur(20px);
+   border-bottom: 1px solid rgba(159, 255, 26, 0.15);
+    }
+
+    /* Hero text */
+    .hero-title {
+   font-size: clamp(3.5rem, 18vw, 20rem);
+   line-height: 0.85;
+   letter-spacing: -0.02em;
+    }
+
+    /* Section heading */
+    .section-heading {
+   font-size: clamp(2.5rem, 8vw, 7rem);
+   line-height: 0.9;
+   letter-spacing: -0.01em;
+    }
+
+    /* Lifestyle parallax */
+    .parallax-bg {
+   background-attachment: fixed;
+   background-size: cover;
+   background-position: center;
+    }
+    @media (max-width: 768px) {
+   .parallax-bg { background-attachment: scroll; }
+    }
+
+    /* Drop counter */
+    .yield-bar {
+   height: 4px;
+   background: rgba(159, 255, 26, 0.15);
+   border-radius: 2px;
+   overflow: hidden;
+    }
+    .yield-fill {
+   height: 100%;
+   background: #9FFF1A;
+   border-radius: 2px;
+   transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Input focus */
+    .drop-input:focus { border-color: #9FFF1A; box-shadow: 0 0 0 3px rgba(159, 255, 26, 0.1); }
+
+    /* Mobile menu */
+    .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Scroll indicator */
+    @keyframes scroll-bounce {
+   0%, 100% { transform: translateY(0); opacity: 0.3; }
+   50% { transform: translateY(8px); opacity: 1; }
+    }
+    .scroll-indicator { animation: scroll-bounce 2s ease-in-out infinite; }
+
+    /* Wordmark */
+    .frogy-wordmark path { fill: currentColor; }
+
+    /* Image fade in */
+    .img-fade-in { opacity: 0; transition: opacity 0.6s ease; }
+    .img-fade-in.loaded { opacity: 1; }
+  </style>
+
+  <!-- NAV -->
+  <nav id="nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16 md:h-20">
+   <!-- Logo -->
+   <a href="#hero" class="flex items-center gap-3 group">
+    <svg viewBox="0 0 737 1477" class="w-5 h-8 md:w-6 md:h-10 text-venom transition-transform group-hover:scale-110" fill="currentColor" fill-rule="evenodd" aria-label="Frögy">
+      <path d="M611.4 20.0 L637.1 20.0 L640.0 22.9 L651.4 22.9 L677.1 34.3 L691.4 45.7 L711.4 88.6 L711.4 148.6 L702.9 168.6 L682.9 197.1 L665.7 208.6 L660.0 208.6 L640.0 217.1 L608.6 217.1 L580.0 205.7 L554.3 177.1 L542.9 154.3 L542.9 140.0 L540.0 137.1 L540.0 94.3 L542.9 91.4 L542.9 80.0 L551.4 62.9 L568.6 42.9 L585.7 28.6 L597.1 22.9 L608.6 22.9 Z M440.0 22.9 L445.7 22.9 L448.6 28.6 L448.6 37.1 L451.4 40.0 L451.4 197.1 L454.3 200.0 L454.3 640.0 L460.0 645.7 L474.3 645.7 L477.1 648.6 L668.6 648.6 L671.4 651.4 L680.0 651.4 L685.7 657.1 L688.6 845.7 L685.7 848.6 L685.7 857.1 L671.4 862.9 L462.9 865.7 L454.3 877.1 L454.3 908.6 L451.4 911.4 L451.4 948.6 L454.3 951.4 L454.3 1297.1 L451.4 1300.0 L451.4 1440.0 L448.6 1442.9 L448.6 1448.6 L442.9 1451.4 L174.3 1451.4 L168.6 1442.9 L168.6 1002.9 L165.7 1000.0 L165.7 874.3 L160.0 865.7 L74.3 865.7 L71.4 862.9 L28.6 862.9 L22.9 860.0 L22.9 851.4 L20.0 848.6 L20.0 654.3 L22.9 651.4 L34.3 651.4 L37.1 648.6 L145.7 648.6 L148.6 645.7 L160.0 645.7 L165.7 640.0 L165.7 625.7 L168.6 622.9 L168.6 397.1 L171.4 394.3 L171.4 365.7 L174.3 362.9 L174.3 342.9 L177.1 340.0 L177.1 325.7 L180.0 322.9 L185.7 291.4 L188.6 288.6 L194.3 265.7 L200.0 257.1 L200.0 251.4 L208.6 237.1 L208.6 231.4 L222.9 202.9 L228.6 197.1 L234.3 182.9 L254.3 157.1 L254.3 154.3 L314.3 91.4 L317.1 91.4 L328.6 80.0 L362.9 57.1 L371.4 54.3 L377.1 48.6 L414.3 31.4 L437.1 25.7 Z"/>
+    </svg>
+    <span class="font-display text-lg md:text-xl tracking-wider text-bone">TOADBOYZ</span>
+   </a>
+
+   <!-- Desktop links -->
+   <div class="hidden md:flex items-center gap-8">
+    <a href="#shop" class="text-sm font-medium text-bone-dim hover:text-venom transition-colors uppercase tracking-wider">Shop</a>
+    <a href="#lifestyle" class="text-sm font-medium text-bone-dim hover:text-venom transition-colors uppercase tracking-wider">Lifestyle</a>
+    <a href="#drops" class="text-sm font-medium text-bone-dim hover:text-venom transition-colors uppercase tracking-wider">Drops</a>
+    <a href="#about" class="text-sm font-medium text-bone-dim hover:text-venom transition-colors uppercase tracking-wider">About</a>
+    <a href="https://toadboyz.com/collections/all" target="_blank" rel="noopener" class="bg-venom text-matte px-5 py-2.5 text-sm font-bold uppercase tracking-wider hover:bg-bone transition-colors">Store</a>
+   </div>
+
+   <!-- Mobile hamburger -->
+   <button id="menu-btn" class="md:hidden text-bone p-2" aria-label="Menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+     <line x1="3" y1="6" x2="21" y2="6"/>
+     <line x1="3" y1="12" x2="21" y2="12"/>
+     <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+   </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-full h-full bg-matte z-50 md:hidden flex flex-col items-center justify-center gap-8">
+    <button id="close-menu" class="absolute top-6 right-6 text-bone p-2" aria-label="Close">
+   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+   </svg>
+    </button>
+    <a href="#shop" class="menu-link font-display text-4xl text-bone hover:text-venom transition-colors">SHOP</a>
+    <a href="#lifestyle" class="menu-link font-display text-4xl text-bone hover:text-venom transition-colors">LIFESTYLE</a>
+    <a href="#drops" class="menu-link font-display text-4xl text-bone hover:text-venom transition-colors">DROPS</a>
+    <a href="#about" class="menu-link font-display text-4xl text-bone hover:text-venom transition-colors">ABOUT</a>
+    <a href="https://toadboyz.com/collections/all" target="_blank" class="menu-link bg-venom text-matte px-8 py-3 font-display text-2xl tracking-wider">STORE</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" class="relative h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+    <!-- Toad icon -->
+    <div class="toad-glow mb-6 md:mb-8">
+   <svg viewBox="0 0 600 500" class="w-48 h-40 md:w-72 md:h-60 text-venom" fill="currentColor">
+    <!-- Body -->
+    <path d="M300 100 C 180 100, 120 160, 100 220 C 60 240, 30 290, 30 350 C 30 420, 80 470, 160 480 C 220 488, 300 490, 300 490 C 300 490, 380 488, 440 480 C 520 470, 570 420, 570 350 C 570 290, 540 240, 500 220 C 480 160, 420 100, 300 100 Z"/>
+    <!-- Left eye bump -->
+    <ellipse cx="200" cy="130" rx="80" ry="90"/>
+    <!-- Right eye bump -->
+    <ellipse cx="400" cy="130" rx="80" ry="90"/>
+    <!-- Left eye dark -->
+    <ellipse cx="200" cy="125" rx="50" ry="60" fill="#0A0A0A"/>
+    <!-- Right eye dark -->
+    <ellipse cx="400" cy="125" rx="50" ry="60" fill="#0A0A0A"/>
+    <!-- Left pupil -->
+    <ellipse cx="200" cy="125" rx="22" ry="32" fill="#9FFF1A"/>
+    <!-- Right pupil -->
+    <ellipse cx="400" cy="125" rx="22" ry="32" fill="#9FFF1A"/>
+   </svg>
+    </div>
+
+    <h1 class="hero-title font-display text-bone text-center">TOADBOYZ</h1>
+
+    <div class="mt-4 md:mt-6 flex items-center gap-3 md:gap-4 text-bone-dim">
+   <span class="h-px w-8 md:w-12 bg-venom"></span>
+   <p class="text-xs md:text-sm font-medium uppercase tracking-[0.3em]">Frögy · Los Angeles · Est 2026</p>
+   <span class="h-px w-8 md:w-12 bg-venom"></span>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9FFF1A" stroke-width="2">
+    <path d="M12 5v14M5 12l7 7 7-7"/>
+   </svg>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="bg-venom py-4 md:py-5 overflow-hidden border-y border-venom-dark">
+    <div class="marquee-track">
+   <div class="flex items-center gap-8 px-4 shrink-0">
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">ONE DOT</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">ONE FROG</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">ONE FRÖGY</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">TOADBOYZ</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">LOS ANGELES</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">EST 2026</span>
+    <span class="text-matte text-2xl">·</span>
+   </div>
+   <div class="flex items-center gap-8 px-4 shrink-0">
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">ONE DOT</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">ONE FROG</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">ONE FRÖGY</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">TOADBOYZ</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">LOS ANGELES</span>
+    <span class="text-matte text-2xl">·</span>
+    <span class="font-display text-2xl md:text-3xl text-matte whitespace-nowrap">EST 2026</span>
+    <span class="text-matte text-2xl">·</span>
+   </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="py-24 md:py-40 px-6">
+    <div class="max-w-5xl mx-auto">
+   <p class="reveal text-xs font-medium uppercase tracking-[0.3em] text-venom mb-8">The Manifesto</p>
+   <h2 class="reveal reveal-delay-1 section-heading font-display text-bone mb-8">
+    We don't chase<br>
+    trends. We build<br>
+    <span class="text-venom">what's next.</span>
+   </h2>
+   <p class="reveal reveal-delay-2 text-lg md:text-xl text-bone-dim max-w-2xl leading-relaxed">
+    Frögy is a culture brand born in Los Angeles. We make limited-run apparel and accessories for people who don't follow — they lead. Every drop is produced to a fixed yield. When it's gone, it's gone. No restocks. No compromises.
+   </p>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" class="py-20 md:py-32 px-6 border-t border-matte-light">
+    <div class="max-w-7xl mx-auto">
+   <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16">
+    <div>
+     <p class="reveal text-xs font-medium uppercase tracking-[0.3em] text-venom mb-4">The Collection</p>
+     <h2 class="reveal reveal-delay-1 section-heading font-display text-bone">SHOP</h2>
+    </div>
+    <a href="https://toadboyz.com/collections/all" target="_blank" rel="noopener" class="reveal reveal-delay-2 mt-6 md:mt-0 text-sm font-bold uppercase tracking-wider text-bone hover:text-venom transition-colors flex items-center gap-2">
+     View All
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+   </div>
+
+   <!-- Product grid (data-driven: live merch, excludes cannabis SKUs) -->
+   <div class="frgy-shop-grid">
+     {% for product in collections.all.products %}
+       {% assign is_cannabis = false %}
+       {% if product.type contains 'Cannabis' or product.type contains 'Flower' or product.tags contains 'cannabis' %}{% assign is_cannabis = true %}{% endif %}
+       {% unless is_cannabis %}
+    <a href="{{ product.url }}" class="reveal product-card group block">
+     <div class="relative overflow-hidden bg-matte-card aspect-square mb-4">
+      {% if product.images.size > 0 %}<img src="{{ product.images[0] | image_url: width: 700 }}" alt="{{ product.title | escape }}" class="product-img w-full h-full object-cover" loading="lazy">{% endif %}
+      {% if product.images.size > 1 %}<img src="{{ product.images[1] | image_url: width: 700 }}" alt="{{ product.title | escape }}" class="product-img-hover" loading="lazy">{% endif %}
+      <div class="product-overlay absolute inset-0 bg-matte/60 flex items-center justify-center opacity-0">
+       <span class="bg-venom text-matte px-6 py-2 text-sm font-bold uppercase tracking-wider">Shop Now</span>
+      </div>
+      {% if product.available %}<div class="absolute top-3 left-3 bg-venom/90 backdrop-blur px-3 py-1 text-xs font-bold text-matte uppercase tracking-wider">Available</div>{% else %}<div class="absolute top-3 left-3 bg-matte/80 backdrop-blur px-3 py-1 text-xs font-medium text-bone uppercase tracking-wider">Sold Out</div>{% endif %}
+     </div>
+     <div class="flex items-center justify-between">
+      <h3 class="text-base font-semibold text-bone">{{ product.title | escape }}</h3>
+      <span class="text-base font-medium text-bone-dim">{{ product.price | money }}</span>
+     </div>
+     <p class="text-sm text-bone-dim mt-1">{% if product.type != blank %}{{ product.type | escape }}{% else %}Frögy Apparel{% endif %}{% if product.variants.size > 1 %} · {{ product.variants.size }} variants{% endif %}</p>
+    </a>
+       {% endunless %}
+     {% endfor %}
+   </div>
+
+   <!-- NEXT DROP (4 unreleased tees — editorial, no buy button, Klaviyo CTA) -->
+   <section id="next-drop" class="mt-24 md:mt-32 pt-20 md:pt-32 border-t border-matte-light relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-dreams/5 rounded-full blur-[120px]"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+     <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16">
+      <div>
+       <p class="reveal text-xs font-medium uppercase tracking-[0.3em] text-dreams mb-4">Coming Soon</p>
+       <h2 class="reveal reveal-delay-1 section-heading font-display text-bone">NEXT<br>DROP</h2>
+      </div>
+      <p class="reveal reveal-delay-2 mt-6 md:mt-0 max-w-sm text-sm text-bone-dim leading-relaxed">Four tees. Fixed yield. Subscribers get 24-hour early access before they hit the floor.</p>
+     </div>
+     <div class="frgy-shop-grid">
+      <a href="#drops" class="reveal product-card group block">
+       <div class="relative overflow-hidden bg-matte-card aspect-square mb-4">
+        <img src="https://raw.githubusercontent.com/dannywarbux/toadboyz/main/images/apparel/next_drop/tee_venom_city.jpg" alt="Frögy Toad Venom City Drop Tee — Bone / LA" class="product-img w-full h-full object-cover" loading="lazy">
+        <div class="absolute top-3 left-3 bg-dreams/80 backdrop-blur px-3 py-1 text-xs font-medium text-bone uppercase tracking-wider">Drop 01</div>
+       </div>
+       <div class="flex items-center justify-between"><h3 class="text-base font-semibold text-bone">Venom City Drop · LA</h3><span class="text-base font-medium text-dreams">Notify</span></div>
+       <p class="text-sm text-bone-dim mt-1">Bone · Toad Venom city back print · Made in LA</p>
+      </a>
+      <a href="#drops" class="reveal product-card group block">
+       <div class="relative overflow-hidden bg-matte-card aspect-square mb-4">
+        <img src="https://raw.githubusercontent.com/dannywarbux/toadboyz/main/images/apparel/next_drop/tee_dreams_stacked.jpg" alt="Frögy Toad Dreams Stacked Tee — Bone / Cyan" class="product-img w-full h-full object-cover" loading="lazy">
+        <div class="absolute top-3 left-3 bg-dreams/80 backdrop-blur px-3 py-1 text-xs font-medium text-bone uppercase tracking-wider">Drop 02</div>
+       </div>
+       <div class="flex items-center justify-between"><h3 class="text-base font-semibold text-bone">Toad Dreams Stacked</h3><span class="text-base font-medium text-dreams">Notify</span></div>
+       <p class="text-sm text-bone-dim mt-1">Bone · Cyan stacked type · Made in LA</p>
+      </a>
+      <a href="#drops" class="reveal product-card group block">
+       <div class="relative overflow-hidden bg-matte-card aspect-square mb-4">
+        <img src="https://raw.githubusercontent.com/dannywarbux/toadboyz/main/images/apparel/next_drop/tee_fcapsule.jpg" alt="Frögy F-Capsule Seal Tee — Black / Venom" class="product-img w-full h-full object-cover" loading="lazy">
+        <div class="absolute top-3 left-3 bg-dreams/80 backdrop-blur px-3 py-1 text-xs font-medium text-bone uppercase tracking-wider">Drop 03</div>
+       </div>
+       <div class="flex items-center justify-between"><h3 class="text-base font-semibold text-bone">F-Capsule Seal</h3><span class="text-base font-medium text-dreams">Notify</span></div>
+       <p class="text-sm text-bone-dim mt-1">Black · Venom F-capsule seal · Made in LA</p>
+      </a>
+      <a href="#drops" class="reveal product-card group block">
+       <div class="relative overflow-hidden bg-matte-card aspect-square mb-4">
+        <img src="https://raw.githubusercontent.com/dannywarbux/toadboyz/main/images/apparel/next_drop/tee_toadboyz.jpg" alt="Frögy TOADBOYZ Collective Tee — Black" class="product-img w-full h-full object-cover" loading="lazy">
+        <div class="absolute top-3 left-3 bg-dreams/80 backdrop-blur px-3 py-1 text-xs font-medium text-bone uppercase tracking-wider">Drop 04</div>
+       </div>
+       <div class="flex items-center justify-between"><h3 class="text-base font-semibold text-bone">TOADBOYZ Collective</h3><span class="text-base font-medium text-dreams">Notify</span></div>
+       <p class="text-sm text-bone-dim mt-1">Black · Bone tonal TOADBOYZ print · Made in LA</p>
+      </a>
+     </div>
+     <div class="reveal mt-12 text-center">
+      <a href="#drops" class="inline-flex items-center gap-2 bg-venom text-matte px-8 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-bone transition-colors">Get Drop Access<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+     </div>
+    </div>
+   </section>
+
+    </div>
+  </section>
+
+{% render "frgy-hub-part2" %}
